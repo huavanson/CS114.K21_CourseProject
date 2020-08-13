@@ -22,11 +22,14 @@ trung bình 3-5frame/s để đảm bảo có sự khác nhau về mặt góc đ
 * ảnh sẽ được chia train/test theo tỉ lệ 8/2 
 
 ## Trích xuất các đặc trưng
-
 Ở đây mình sẽ dùng 2 cách:
-* Cách 1: 
-* Cách 2: 
+*Cách 1:Ý tưởng ở đây là sự khác nhau giữa hình dạng của 1 người có đội nón và 1 người không đội nón vì vậy đầu tiên em sử dụng thuật toán tìm cạnh trong OpenCV – CannyEdge sau khi ảnh đã được crop tập trung vào chủ thể con người để rút trích ra đặc trưng của 2 loại ảnh dựa vào hình dáng của chủ thể ( đặc biệt là phần đầu). Tiếp theo em sẽ chia ảnh ra thành các ô pixel nhỏ hơn trên nền ảnh 200x200 , với 1 ô như thế em lấy 2 giá trị đại diện cho ô đó là giá trị np.mean (giá trị trung bình) và np.std (độ lệch chuẩn)  
+*Cách 2:Sử dụng pre-trained model (VGG16) để rút trích . Đầu vào resize về kích thước 224x224 và qua các  bước xử lí để phù hợp với đầu vào của mạng VGG16 . 
+ 
 ## Xây dựng model 
+-Model em chọn là LogisticRegression và RandomForestClassifier của sklearn vì đây là 2 loại model em đã được học và từng sử dụng trên lớp , hơn nữa 2 model này được sử dụng phổ biến trong các bài toán binary classification. Trong đồ án này , để có thể đảm bảo model có độ performance tốt thì có sử dụng thêm kỹ thuật gridsearchCV tìm ra param tốt nhất cho model .
+-Đánh giá model bằng accuracy score , confusion matrix
 
 ## Hướng phát triển 
+Để nâng cao độ chính xác cũng như tính thực tế của bài toán nếu sử dụng cách tiền xử lí ảnh của bọn em là crop theo tỉ lệ chiều dài và chiều rộng thì không khả thi so với những hình ảnh mới, thực tế bị lệch so với dataset đã chuẩn bị từ trước nếu cố chấp crop theo tỉ lệ được định sẵn theo em thì rất có thể là sẽ làm mất phần quan trọng nhất của bức ảnh . Vì vậy hướng phát triển em đề ra là tìm 1 thư viện hoặc phần mềm hỗ trợ bỏ đi backround không cần thiết mà chỉ quan tâm đến chủ thể trong bức ảnh ( phần đầu người) . Hướng phát triển khác em muốn đề cập nữa là thiết kế và sử dụng hoàn toàn 1 mạng tích chập neural network dùng chung cho việc từ tiền xử lí ảnh ,rút trích cho đến việc phân loại ảnh. 
 
