@@ -21,12 +21,5 @@ trung bình 3-5frame/s để đảm bảo có sự khác nhau về mặt góc đ
 * Hình ảnh sẽ được resize về kích thước 224 * 224 trước khi đưa vào trích xuất đặc trưng 
 * ảnh sẽ được chia train/test theo tỉ lệ 8/2 
 
-## Trích xuất các đặc trưng
 
-Ở đây mình sẽ dùng 2 cách:
-* Cách 1: 
-* Cách 2: 
-## Xây dựng model 
-
-## Hướng phát triển 
 
