@@ -23,3 +23,4 @@ trung bình 3-5frame/s để đảm bảo có sự khác nhau về mặt góc đ
 
 
 
+### Nếu không thể view code ở đây, hãy truy cập : https://nbviewer.jupyter.org/github/huavanson/ML_Project/blob/master/ML_helmet_rec.ipynb
